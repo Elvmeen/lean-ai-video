@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ app_name }}</title>
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+<header class="nav wrap"><a class="brand" href="/">LV</a><div class="nav-actions"><a href="/app">Library</a><button class="ghost">Sign in</button></div></header>
+<main class="hero wrap">
+  <section class="intro"><p class="eyebrow">AI VIDEO</p><h1>Make a video.<br>Nothing in the way.</h1><p class="sub">Describe it. Generate it. Share it.</p></section>
+  <section class="composer">
+    <textarea id="prompt" maxlength="2000" placeholder="A slow aerial shot over Lagos at blue hour, cinematic reflections on wet roads…"></textarea>
+    <div class="bar">
+      <div class="options">
+        <select id="ratio"><option>9:16</option><option>16:9</option><option>1:1</option></select>
+        <select id="duration"><option value="5">5 sec</option><option value="8">8 sec</option><option value="10">10 sec</option></select>
+        <label class="toggle"><input id="enhance" type="checkbox" checked><span>Enhance</span></label>
+      </div>
+      <button id="generate" class="primary">Generate</button>
+    </div>
+  </section>
+  <section id="result" class="result hidden">
+    <div><small id="status">READY</small><p id="message"></p></div>
+    <div class="result-actions"><button id="share" class="ghost">Share</button><button id="copy" class="ghost">Copy prompt</button></div>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

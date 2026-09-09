@@ -1,13 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{{ app_name }}</title>
+  <title>VIDA AI</title>
+  <script>
+    (()=>{const saved=localStorage.getItem('vida-theme');if(saved)document.documentElement.dataset.theme=saved;})();
+  </script>
   <link rel="stylesheet" href="/static/app.css" />
 </head>
 <body>
-<header class="nav wrap"><a class="brand" href="/">LV</a><div class="nav-actions"><a href="/app">Library</a><button class="ghost">Sign in</button></div></header>
+<header class="nav wrap">
+  <a class="brand brand-word" href="/" aria-label="VIDA AI home"><span class="brand-mark">V</span><span>VIDA AI</span></a>
+  <div class="nav-actions">
+    <a href="/app">Library</a>
+    <button id="themeToggle" class="ghost theme-toggle" type="button" aria-label="Switch colour theme"><span class="theme-icon">☾</span><span class="theme-label">Dark</span></button>
+    <button class="ghost">Sign in</button>
+  </div>
+</header>
 <main class="hero wrap">
   <section class="intro"><p class="eyebrow">AI VIDEO</p><h1>Make a video.<br>Nothing in the way.</h1><p class="sub">Describe it. Generate it. Share it.</p></section>
   <section class="composer">

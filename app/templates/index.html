@@ -24,8 +24,14 @@
     <textarea id="prompt" maxlength="2000" placeholder="A slow aerial shot over Lagos at blue hour, cinematic reflections on wet roads…"></textarea>
     <div class="bar">
       <div class="options">
-        <select id="ratio"><option>9:16</option><option>16:9</option><option>1:1</option></select>
-        <select id="duration"><option value="5">5 sec</option><option value="8">8 sec</option><option value="10">10 sec</option></select>
+        <select id="ratio" aria-label="Video format"><option>9:16</option><option>16:9</option><option>1:1</option></select>
+        <select id="duration" aria-label="Video duration"><option value="5">5 sec</option><option value="8">8 sec</option><option value="10">10 sec</option></select>
+        <select id="style" aria-label="Video style">
+          <option value="Cinematic Documentary">Cinematic Documentary</option>
+          <option value="Realistic YouTube">Realistic YouTube</option>
+          <option value="Gaming">Gaming</option>
+          <option value="News Documentary">News Documentary</option>
+        </select>
         <label class="toggle"><input id="enhance" type="checkbox" checked><span>Enhance</span></label>
       </div>
       <button id="generate" class="primary">Generate</button>

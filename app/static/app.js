@@ -1,4 +1,10 @@
 const $=s=>document.querySelector(s);const button=$('#generate');const result=$('#result');let lastPrompt='';
+
+const themeToggle=$('#themeToggle');
+const applyTheme=(theme)=>{document.documentElement.dataset.theme=theme;localStorage.setItem('vida-theme',theme);const dark=theme==='dark';const icon=themeToggle?.querySelector('.theme-icon');const label=themeToggle?.querySelector('.theme-label');if(icon)icon.textContent=dark?'☀':'☾';if(label)label.textContent=dark?'Light':'Dark';themeToggle?.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme')};
+applyTheme(document.documentElement.dataset.theme||'light');
+themeToggle?.addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+
 button?.addEventListener('click',async()=>{const prompt=$('#prompt').value.trim();if(prompt.length<3)return;button.disabled=true;button.textContent='Generating…';result.classList.remove('hidden');$('#status').textContent='WORKING';$('#message').textContent='Preparing your generation…';try{const r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,aspect_ratio:$('#ratio').value,duration:Number($('#duration').value),enhance:$('#enhance').checked})});const data=await r.json();lastPrompt=data.prompt||prompt;$('#status').textContent=(data.status||'queued').toUpperCase();$('#message').textContent=data.message||'Generation queued.'}catch(e){$('#status').textContent='ERROR';$('#message').textContent='Could not start generation.'}finally{button.disabled=false;button.textContent='Generate'}});
 $('#copy')?.addEventListener('click',async()=>{await navigator.clipboard.writeText(lastPrompt||$('#prompt').value);$('#copy').textContent='Copied';setTimeout(()=>$('#copy').textContent='Copy prompt',1200)});
-$('#share')?.addEventListener('click',async()=>{const text=lastPrompt||$('#prompt').value;if(navigator.share){await navigator.share({title:'AI video prompt',text})}else{await navigator.clipboard.writeText(text)}});
+$('#share')?.addEventListener('click',async()=>{const text=lastPrompt||$('#prompt').value;if(navigator.share){await navigator.share({title:'VIDA AI video prompt',text})}else{await navigator.clipboard.writeText(text)}});

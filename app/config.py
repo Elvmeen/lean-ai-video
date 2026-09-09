@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    app_name: str = "Lean Video"
+    app_name: str = "VIDA AI"
     app_env: str = "development"
     gemini_api_key: str = ""
     video_provider: str = "mock"
